@@ -8,9 +8,9 @@
   register: update_packages
   become: true
 
-- name: Reboot the instances and wait for them to come back up.
-  reboot:
-  when: update_packages.changed
+#- name: Reboot the instances and wait for them to come back up.
+#  reboot:
+#  when: update_packages.changed
 
 - name: Install dependencies
   apt:

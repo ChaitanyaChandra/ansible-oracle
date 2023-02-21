@@ -7,10 +7,10 @@
     owner: ubuntu
   become: true
 
-#- name: Install dependencies
-#  apt:
-#    name: "{{ package_dependencies }}"
-#  become: true
+- name: Install dependencies
+  apt:
+    name: "{{ package_dependencies }}"
+  become: true
 
 - name: Install pip dependencies
   pip:
