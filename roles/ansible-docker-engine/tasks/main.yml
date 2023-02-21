@@ -1,12 +1,12 @@
 ---
 # tasks file for ansible-docker-engine
 
-- name: Update OS to the latest packages
-  apt:
-    upgrade: dist 
-    force_apt_get: yes
-  register: update_packages
-  become: true
+#- name: Update OS to the latest packages
+#  apt:
+#    upgrade: dist
+#    force_apt_get: yes
+#  register: update_packages
+#  become: true
 
 #- name: Reboot the instances and wait for them to come back up.
 #  reboot:
