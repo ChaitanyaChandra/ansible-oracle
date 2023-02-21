@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: localhost
   vars:
     install_portainer: false
     install_traefik_and_portainer: true
