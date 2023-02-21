@@ -1,5 +1,5 @@
 ---
-- hosts: oci-instances
+- hosts: all
   vars:
     install_portainer: false
     install_traefik_and_portainer: true
