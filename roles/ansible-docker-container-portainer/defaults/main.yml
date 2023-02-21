@@ -28,4 +28,4 @@ container_ports:
 
 # Admin User
 admin_user: chaitu
-admin_password: "@123Chaitu"
+admin_password: "@123Chaitanya"
