@@ -32,3 +32,21 @@
     enabled: yes
     daemon_reload: yes
   notify: restart Service
+
+- name: Open port 80
+  hosts: your_host
+  become: yes
+  tasks:
+    - name: Allow incoming traffic on port 80
+      firewalld:
+        service: http
+        permanent: true
+        immediate: true
+        state: enabled
+      notify:
+        - save firewall
+  handlers:
+    - name: save firewall
+      firewalld:
+        state: save
+      become: yes
