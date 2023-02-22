@@ -14,7 +14,7 @@
 
 - name: Copy App Content
   ansible.builtin.copy:
-    src: /tmp/leads-main/
+    src: /tmp/Leads-main/
     dest: /home/{{USER}}/{{COMPONENT}}/
     remote_src: yes
   become_user: "{{USER}}"
