@@ -1,0 +1,14 @@
+[Unit]
+Description = {{COMPONENT}} Service
+
+[Service]
+User={{USER}}
+ExecStart=/usr/bin/node index.js
+SyslogIdentifier={{COMPONENT}}
+WorkingDirectory=/home/{{USER}}/{{COMPONENT}}/
+Environment="PORT={{PORT}}"
+# StandardOutput=syslog
+# StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target

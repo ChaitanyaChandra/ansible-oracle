@@ -1,0 +1,34 @@
+- name: Setup NodeJs repo
+  shell: curl -sL https://rpm.nodesource.com/setup_16.x | bash -
+
+- name: Install dependencies 
+  ansible.builtin.yum:
+    name:
+      - unzip
+      - nodejs
+    state: present
+
+- name: Include encrypted variables from vault
+  include_vars: vars/vault.yml
+
+- name: Application User Setup and Download App Files
+  import_tasks: app-user-setup.yml
+
+#- name: Install packages based on package.json.
+#  community.general.npm:
+#    path: /home/{{USER}}/{{COMPONENT}}
+#  become_user: "{{USER}}"
+
+- name:  Copy {{COMPONENT}} filebeat and rsyslog config
+  template: src={{ item.src }} dest={{ item.dest }}
+  loop:
+    - { src: 'systemd.service' , dest: '/etc/systemd/system/{{COMPONENT}}.service' }
+    - { src: 'rsyslog.conf' , dest: '/etc/rsyslog.d/{{COMPONENT}}.conf' }
+
+- name: Start {{COMPONENT}} Service
+  ansible.builtin.systemd:
+    name: "{{COMPONENT}}"
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+  notify: restart Service
