@@ -39,5 +39,3 @@
     permanent: true
     immediate: true
     state: enabled
-  notify:
-    - save firewall
