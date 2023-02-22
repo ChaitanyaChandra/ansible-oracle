@@ -1,6 +1,4 @@
 - name: Download and UnZip the Application Content
-  vars:
-    ansible_vault_password_file: "{{ lookup('file', 'vkey') }}"
   ansible.builtin.unarchive:
     src: https://github.com/ChaitanyaChandra/leads/archive/main.zip
     dest: /tmp
