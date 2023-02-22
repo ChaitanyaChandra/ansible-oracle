@@ -1,6 +1,7 @@
 - name: Add Application User
   ansible.builtin.user:
     name: "{{USER}}"
+    group: root
   register: app_user_info
 
 ## This is been added for deployment purpose , For first time when component is setup then it might fail, So lets ignore the failure
