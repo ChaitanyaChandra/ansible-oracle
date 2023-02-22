@@ -4,5 +4,7 @@
   become: yes
   vars:
     ansible_vault_password_file: "{{ lookup('file', 'vkey') }}"
+  vars_files:
+    - "{{ playbook_dir }}/roles/nodejs/vars/vault.yml"
   roles:
     - nodejs
