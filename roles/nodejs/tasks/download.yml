@@ -1,22 +1,22 @@
-- name: when git dwonload is defined
-  block:
-    - name: Download and UnZip the Application Content
-      ansible.builtin.unarchive:
-        src: https://github.com/ChaitanyaChandra/leads/archive/main.zip
-        dest: /tmp
-        remote_src: yes
-        headers:
-          Authorization: "Bearer {{ github_token }}"
+- name: Download and UnZip the Application Content
+  vars:
+    ansible_vault_password_file: "{{ lookup('file', 'vkey') }}"
+  ansible.builtin.unarchive:
+    src: https://github.com/ChaitanyaChandra/leads/archive/main.zip
+    dest: /tmp
+    remote_src: yes
+    headers:
+      Authorization: "Bearer {{ github_token }}"
 
-    - name: Copy App Content
-      ansible.builtin.copy:
-        src: /tmp/leads-main/
-        dest: /home/{{USER}}/{{COMPONENT}}/
-        remote_src: yes
-      become_user: "{{USER}}"
+- name: Copy App Content
+  ansible.builtin.copy:
+    src: /tmp/leads-main/
+    dest: /home/{{USER}}/{{COMPONENT}}/
+    remote_src: yes
+  become_user: "{{USER}}"
 
-    - name: Install packages based on package.json.
-      shell: npm install
-      args:
-        chdir: "/home/{{USER}}/{{COMPONENT}}"
-      become_user: "{{USER}}"
+- name: Install packages based on package.json.
+  shell: npm install
+  args:
+    chdir: "/home/{{USER}}/{{COMPONENT}}"
+  become_user: "{{USER}}"
