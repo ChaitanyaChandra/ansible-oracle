@@ -1,6 +1,5 @@
 ---
 - name: "setup for leads application"
-  hosts: localhost
   become: yes
   roles:
     - nodejs
