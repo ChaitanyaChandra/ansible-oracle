@@ -6,7 +6,7 @@ User={{USER}}
 ExecStart=/usr/bin/node index.js
 SyslogIdentifier={{COMPONENT}}
 WorkingDirectory=/home/{{USER}}/{{COMPONENT}}/
-Environment="port={{PORT}}"
+# Environment="port={{PORT}}"
 # StandardOutput=syslog
 # StandardError=syslog
 
