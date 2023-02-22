@@ -3,12 +3,14 @@ Description = {{COMPONENT}} Service
 
 [Service]
 User={{USER}}
+Group=root
 ExecStart=/usr/bin/node index.js
 SyslogIdentifier={{COMPONENT}}
 WorkingDirectory=/home/{{USER}}/{{COMPONENT}}/
 # Environment="port={{PORT}}"
 # StandardOutput=syslog
 # StandardError=syslog
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
