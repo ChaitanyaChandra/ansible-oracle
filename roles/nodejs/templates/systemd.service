@@ -3,7 +3,7 @@ Description = {{COMPONENT}} Service
 After=network.target
 
 [Service]
-User={{USER}}
+User=root
 Group=root
 ExecStart=/usr/bin/node index.js
 SyslogIdentifier={{COMPONENT}}
