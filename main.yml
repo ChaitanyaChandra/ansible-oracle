@@ -1,0 +1,8 @@
+---
+- name: "setup for leads application"
+  hosts: localhost
+  become: yes
+  vars:
+    ansible_vault_password_file: "{{ lookup('file', 'vkey') }}"
+  roles:
+    - nodejs
