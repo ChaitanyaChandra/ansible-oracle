@@ -9,8 +9,6 @@
     state: present
 
 - name: Include encrypted variables from vault
-  vars:
-    ansible_vault_password_file: "{{ lookup('file', 'vkey') }}"
   include_vars: vars/vault.yml
 
 - name: Application User Setup and Download App Files
