@@ -4,12 +4,18 @@
     group: root
   register: app_user_info
 
+- name: Create .ssh Dir
+  ansible.builtin.file:
+    path: /home/{{USER}}/.ssh
+    state: directory
+    mode: '0700'
+
 - name: Copy ssh keys
   ansible.builtin.copy:
-    src: /home/opc/.ssh
-    dest: /home/{{USER}}/
+    src: /home/opc/.ssh/
+    dest: /home/{{USER}}/.ssh/
     remote_src: yes
-  become_user: "{{USER}}"
+    mode: '0600'
 
 ## This is been added for deployment purpose , For first time when component is setup then it might fail, So lets ignore the failure
 - name: Stop {{COMPONENT}} Service
