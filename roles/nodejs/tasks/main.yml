@@ -33,6 +33,9 @@
     daemon_reload: yes
   notify: restart Service
 
+- name: disable SE linux
+  shell: setenforce 0
+
 - name: Allow incoming traffic on port 80
   firewalld:
     service: http
