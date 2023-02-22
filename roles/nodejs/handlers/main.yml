@@ -4,3 +4,8 @@
     state: 'restarted'
   loop:
     - { service: 'rsyslog' }
+
+- name: save firewall
+  firewalld:
+    state: save
+  become: yes
