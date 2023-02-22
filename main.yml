@@ -2,8 +2,6 @@
 - name: "setup for leads application"
   hosts: localhost
   become: yes
-  vars:
-    ansible_vault_password_file: "{{ lookup('file', 'vkey') }}"
   vars_files:
     - "{{ playbook_dir }}/roles/nodejs/vars/vault.yml"
   roles:
